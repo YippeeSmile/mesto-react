@@ -1,7 +1,6 @@
 import React from "react";
 
-function ImagePopup(props, selectedCard) {
-    console.log(selectedCard, 'selectedCard')
+function ImagePopup(props) {
   return (
     <section onClick={props.onClose} 
       className={`popup ${
@@ -12,11 +11,11 @@ function ImagePopup(props, selectedCard) {
         <button className="popup__close" />
         <img
           className="popup__image"
-          src={props.card.src}
-          alt={props.card.title}
+          src={props.card?.src}
+          alt={props.card?.title}
         />
         <figcaption className="popup__image-name">
-          {props.card.title}
+          {props.card?.title}
         </figcaption>
       </div>
     </section>
