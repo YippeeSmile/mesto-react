@@ -1,27 +1,26 @@
-import React from "react";
-import Card from "./Card";
-import { api } from '../utils/Api';
+import React from 'react'
+import Card from './Card'
+import { api } from '../utils/Api'
 
 function Main(props) {
+  const [userName, setUserName] = React.useState('')
+  const [userDescription, setUserDescription] = React.useState('')
+  const [userAvatar, setUserAvatar] = React.useState('')
+  const [cards, setCards] = React.useState([])
 
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [userAvatar, setUserAvatar] = React.useState('');
-    const [cards, setCards] = React.useState([]);
-
-     //запрос на данные user's и cards
-    React.useEffect(() => {
-        Promise.all([api.getProfile(), api.getCards()])
-            .then(([res, cards]) => {
-                setUserName(res.name)
-                setUserDescription(res.about)
-                setUserAvatar(res.avatar)
-                setCards(cards)
-            })
-            .catch((err) => {
-                console.log(`Ошибка: ${err}`)
-            ;})
-    }, []);
+  //запрос на данные user's и cards
+  React.useEffect(() => {
+    Promise.all([api.getProfile(), api.getCards()])
+      .then(([res, cards]) => {
+        setUserName(res.name)
+        setUserDescription(res.about)
+        setUserAvatar(res.avatar)
+        setCards(cards)
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+  }, [])
 
   return (
     <div className="Main">
@@ -31,8 +30,7 @@ function Main(props) {
             <button
               className="profile__avatar-button"
               onClick={props.onEditAvatar}
-            >
-            </button>
+            ></button>
             <img src={userAvatar} className="profile__image" alt="Аватар" />
           </div>
           <div className="profile__info">
@@ -41,17 +39,17 @@ function Main(props) {
               <button
                 className="profile__edit-button"
                 onClick={props.onEditProfile}
-              >
-              </button>
+              ></button>
             </div>
             <p className="profile__further"> {userDescription} </p>
           </div>
-          <button className="profile__add-button" onClick={props.onAddPlace}>
-          </button>
+          <button
+            className="profile__add-button"
+            onClick={props.onAddPlace}
+          ></button>
         </section>
         <section className="gallery">
           <ul className="gallery__items">
-            
             {cards.map((card) => {
               return (
                 <Card
@@ -61,13 +59,13 @@ function Main(props) {
                   key={card._id}
                   handleCardClick={props.onEditCardClick}
                 />
-              );
+              )
             })}
           </ul>
         </section>
       </main>
     </div>
-  );
+  )
 }
 
-export default Main;
+export default Main
