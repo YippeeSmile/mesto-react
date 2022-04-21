@@ -16,7 +16,7 @@ function Card(props) {
 
     // Создаём переменную, которую после зададим в `className` для кнопки лайка
     const cardLikeButtonClassName = (
-        `gallery__like-button ${isOwn ? 'gallery__like-button_visible' : 'gallery__like-button_hidden'}`
+        `gallery__like-button ${isLiked ? 'gallery__like-button_visible' : 'gallery__like-button_hidden'}`
       ); 
 
     function handleClick() {
