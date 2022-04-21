@@ -12,6 +12,7 @@ function App() {
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState(null);
+    //const [currentUser, setCurrentUser] = React.useState({});
 
     const closeAllPopups = (evt) => {
         if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
