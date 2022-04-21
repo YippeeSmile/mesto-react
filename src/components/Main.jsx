@@ -1,25 +1,18 @@
 import React from 'react'
 import Card from './Card'
 import { api } from '../utils/Api'
+import { CurrentUserContext } from '../context/CurrentUserContext'
 
 function Main(props) {
-  const [userName, setUserName] = React.useState('')
-  const [userDescription, setUserDescription] = React.useState('')
-  const [userAvatar, setUserAvatar] = React.useState('')
+  //const [userName, setUserName] = React.useState('')
+  //const [userDescription, setUserDescription] = React.useState('')
+ // const [userAvatar, setUserAvatar] = React.useState('')
   const [cards, setCards] = React.useState([])
+  const currentUserContext = React.useContext(CurrentUserContext); // подписываемся на контекст
+  console.log(currentUserContext, 'currentUserContext')
 
-  //запрос на данные user's и cards
+  //запрос на данные cards
   React.useEffect(() => {
-    api.getUserInfo()
-      .then((res) => {
-        setUserName(res.name)
-        setUserDescription(res.about)
-        setUserAvatar(res.avatar)
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`)
-      })
-
       api.getCards()
       .then((cards) => {
         setCards(cards)
@@ -38,17 +31,17 @@ function Main(props) {
               className="profile__avatar-button"
               onClick={props.onEditAvatar}
             ></button>
-            <img src={userAvatar} className="profile__image" alt="Аватар" />
+            <img src={currentUserContext.avatar} className="profile__image" alt="Аватар" />
           </div>
           <div className="profile__info">
             <div className="profile__text">
-              <h1 className="profile__name"> {userName} </h1>
+              <h1 className="profile__name"> {currentUserContext.name} </h1>
               <button
                 className="profile__edit-button"
                 onClick={props.onEditProfile}
               ></button>
             </div>
-            <p className="profile__further"> {userDescription} </p>
+            <p className="profile__further"> {currentUserContext.about} </p>
           </div>
           <button
             className="profile__add-button"
