@@ -10,11 +10,18 @@ function Main(props) {
 
   //запрос на данные user's и cards
   React.useEffect(() => {
-    Promise.all([api.getProfile(), api.getCards()])
-      .then(([res, cards]) => {
+    api.getUserInfo()
+      .then((res) => {
         setUserName(res.name)
         setUserDescription(res.about)
         setUserAvatar(res.avatar)
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+
+      api.getCards()
+      .then((cards) => {
         setCards(cards)
       })
       .catch((err) => {
