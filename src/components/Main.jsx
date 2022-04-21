@@ -4,12 +4,8 @@ import { api } from '../utils/Api'
 import { CurrentUserContext } from '../context/CurrentUserContext'
 
 function Main(props) {
-  //const [userName, setUserName] = React.useState('')
-  //const [userDescription, setUserDescription] = React.useState('')
- // const [userAvatar, setUserAvatar] = React.useState('')
   const [cards, setCards] = React.useState([])
   const currentUserContext = React.useContext(CurrentUserContext); // подписываемся на контекст
-  console.log(currentUserContext, 'currentUserContext')
 
   //запрос на данные cards
   React.useEffect(() => {
