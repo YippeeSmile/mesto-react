@@ -20,7 +20,6 @@ function App() {
     api.getUserInfo()
       .then((res) => {
         setCurrentUser(res)
-        
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`)
@@ -57,10 +56,12 @@ function App() {
         <div className = "App" >
         <div className = "page" >
         <Header />
-        <Main onEditAvatar = { handleEditAvatarClick }
-        onEditProfile = { handleEditProfileClick }
+        <Main 
+        onEditAvatar = {handleEditAvatarClick}
+        onEditProfile = {handleEditProfileClick}
         onAddPlace = { handleAddPlaceClick }
         onEditCardClick = { handleCardClick }
+        //cards={cards}
         /> 
         <Footer />
         <PopupWithForm name = "profile-edit"

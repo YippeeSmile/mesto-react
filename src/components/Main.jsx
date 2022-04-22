@@ -4,6 +4,7 @@ import { api } from '../utils/Api'
 import { CurrentUserContext } from '../context/CurrentUserContext'
 
 function Main(props) {
+
   const [cards, setCards] = React.useState([])
   const currentUser = React.useContext(CurrentUserContext); // подписываемся на контекст
 
@@ -51,8 +52,10 @@ function Main(props) {
                 <Card
                   src={card.link}
                   likes={card.likes.length}
+                  hasLikes={card.likes}
                   title={card.name}
                   key={card._id}
+                  owner={card.owner._id}
                   handleCardClick={props.onEditCardClick}
                 />
               )
