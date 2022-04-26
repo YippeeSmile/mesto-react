@@ -50,8 +50,10 @@
 @import url(./blocks/gallery/__description/_side-right/gallery__description_side-right.css);
 @import url(./blocks/gallery/__like-button/gallery__like-button.css);
 @import url(./blocks/gallery/__like-button/_count/gallery__like-button_count.css);
-@import url(./blocks/gallery/__like-button/_field/__like-button_field.css);
+@import url(./blocks/gallery/__like-button/_field/gallery__like-button_field.css);
 @import url(./blocks/gallery/__delete-button/gallery__delete-button.css);
+@import url(./blocks/gallery/__delete-button/_visible/gallery__delete-button_visible.css);
+@import url(./blocks/gallery/__delete-button/_hidden/gallery__delete-button_hidden.css);
 
 /*стили для footer*/
 
