@@ -1,6 +1,6 @@
-import React from 'react'
-import PopupWithForm from './PopupWithForm'
-import { useRef } from 'react'
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
+import { useRef, useEffect } from 'react';
 
 function EditAvatarPopup(props) {
   //onClose, isOpen, onUpdateAvatar
@@ -14,6 +14,10 @@ function EditAvatarPopup(props) {
     })
     props.onClose()
   }
+
+  useEffect(() => {
+    avatarRef.current.value = '';
+  }, [props.isOpen]);
 
   return (
     <PopupWithForm
@@ -42,4 +46,4 @@ function EditAvatarPopup(props) {
   )
 }
 
-export default EditAvatarPopup
+export default EditAvatarPopup;

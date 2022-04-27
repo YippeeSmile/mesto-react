@@ -1,8 +1,9 @@
-import React from 'react'
-import { CurrentUserContext } from '../context/CurrentUserContext'
+import React from 'react';
+import { useContext } from 'react';
+import { CurrentUserContext } from '../context/CurrentUserContext';
 
 function Card({ card, handleCardClick, onCardLike, onCardDelete }) {
-  const currentUser = React.useContext(CurrentUserContext) // подписываемся на контекст
+  const currentUser = useContext(CurrentUserContext) // подписываемся на контекст
 
   const isOwn = card.owner._id === currentUser._id // Определяем, являемся ли мы владельцем текущей карточки
 
@@ -12,7 +13,7 @@ function Card({ card, handleCardClick, onCardLike, onCardDelete }) {
   }`
 
   const isLiked = card.likes.some((item) => item._id === currentUser._id)
-  console.log(isLiked, 'isLiked')
+
   // Создаём переменную, которую после зададим в `className` для кнопки лайка
   const cardLikeButtonClassName = `gallery__like-button ${
     isLiked ? 'gallery__like-button_field' : ''
@@ -58,4 +59,4 @@ function Card({ card, handleCardClick, onCardLike, onCardDelete }) {
   )
 }
 
-export default Card
+export default Card;

@@ -1,48 +1,37 @@
-import React from 'react'
-import '../index'
-import Header from './Header'
-import Main from './Main'
-import Footer from './Footer'
-import ImagePopup from './ImagePopup'
-import PopupWithForm from './PopupWithForm'
-import { api } from '../utils/Api'
-import { CurrentUserContext } from '../context/CurrentUserContext'
-import EditProfilePopup from './EditProfilePopup'
-import EditAvatarPopup from './EditAvatarPopup'
-import AddPlacePopup from './AddPlacePopup'
+import React from 'react';
+import {useEffect, useState} from 'react';
+import '../index';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import ImagePopup from './ImagePopup';
+import PopupWithForm from './PopupWithForm';
+import { api } from '../utils/Api';
+import { CurrentUserContext } from '../context/CurrentUserContext';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(
     false,
   )
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(
     false,
   )
-  const [selectedCard, setSelectedCard] = React.useState(null)
-  const [currentUser, setCurrentUser] = React.useState({})
-  const [cards, setCards] = React.useState([])
+  const [selectedCard, setSelectedCard] = useState(null)
+  const [currentUser, setCurrentUser] = useState({})
+  const [cards, setCards] = useState([])
 
-  //запрос на данные user
-  React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then((res) => {
+  //запрос на данные user's и cards 
+  useEffect(() => {
+    Promise.all([api.getUserInfo(), api.getCards()])
+    .then(([res, cards]) => {
         setCurrentUser(res)
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`)
-      })
-  }, [])
-
-  //запрос на данные cards
-  React.useEffect(() => {
-    api
-      .getCards()
-      .then((cards) => {
         setCards(cards)
-      })
-      .catch((err) => {
+    })
+     .catch((err) => {
         console.log(`Ошибка: ${err}`)
       })
   }, [])
