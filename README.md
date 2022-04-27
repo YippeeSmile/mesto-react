@@ -1,7 +1,8 @@
 # Проект mesto-react
 
-Интерактивный одностраничный сайт. Сделан на Create React App. 
-[Ссылка проекта на gh-pages](https://yippeesmile.github.io/mesto-react/)
+Интерактивный одностраничный сайт. Сделан на Create React App.
+
+[Проект на gh-pages](https://yippeesmile.github.io/mesto-react/)
 
 **Функционал:** добавление и удаление фотографий, постановка и удаление лайков, изменения данных пользователя, смена аватара.
 
