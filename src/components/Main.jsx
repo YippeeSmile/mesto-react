@@ -3,7 +3,7 @@ import Card from './Card'
 import { CurrentUserContext } from '../context/CurrentUserContext'
 
 function Main(props) {
-  const currentUser = React.useContext(CurrentUserContext); // подписываемся на контекст
+  const currentUser = React.useContext(CurrentUserContext) // подписываемся на контекст
 
   return (
     <div className="Main">
@@ -14,7 +14,11 @@ function Main(props) {
               className="profile__avatar-button"
               onClick={props.onEditAvatar}
             ></button>
-            <img src={currentUser.avatar} className="profile__image" alt="Аватар" />
+            <img
+              src={currentUser.avatar}
+              className="profile__image"
+              alt="Аватар"
+            />
           </div>
           <div className="profile__info">
             <div className="profile__text">
@@ -42,7 +46,7 @@ function Main(props) {
                   hasLikes={element.likes}
                   title={element.name}
                   key={element._id}
-                  owner={element.owner._id} 
+                  owner={element.owner._id}
                   handleCardClick={props.handleCardClick}
                   onCardLike={props.handleCardLike}
                   onCardDelete={props.handleCardDelete}

@@ -1,5 +1,5 @@
-import React from "react";
-import logo from "../images/mesto-logo.svg";
+import React from 'react'
+import logo from '../images/mesto-logo.svg'
 
 function Header() {
   return (
@@ -8,7 +8,7 @@ function Header() {
         <img src={logo} className="logo" alt="Логотип Mesto" />
       </header>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
